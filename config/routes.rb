@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :blog_posts
   resources :books do
     member do
       patch :publish
@@ -10,6 +11,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'books#index'
+  root 'blog_posts#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
