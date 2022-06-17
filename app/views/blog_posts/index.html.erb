@@ -3,7 +3,7 @@
 <h1>Blog Posts</h1>
 
 <%= form_with url: blog_posts_path, method: :get, local: true do |form| %>
-  <%= form.text_field :query %>
+  <%= form.text_field :query, id: "search-input" %>
   <%= form.submit "Search" %>
 <% end %>
 
@@ -24,3 +24,5 @@
 <br>
 
 <%= link_to 'New Blog Post', new_blog_post_path %>
+
+<%= javascript_pack_tag 'index_search.js' %>
