@@ -3,7 +3,8 @@ class BlogPostsController < ApplicationController
 
   # GET /blog_posts or /blog_posts.json
   def index
-    @blog_posts = BlogPost.all
+    # @blog_posts = BlogPost.all
+    @blog_posts = blog_posts
   end
 
   # GET /blog_posts/1 or /blog_posts/1.json
@@ -66,5 +67,14 @@ class BlogPostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def blog_post_params
       params.require(:blog_post).permit(:title, :body)
+    end
+
+    def search_query
+      params[:query]
+    end
+
+    def blog_posts
+      query = BlogPost.ransack(title_or_body_cont_any: search_query)
+      query.result(distinct: true)
     end
 end

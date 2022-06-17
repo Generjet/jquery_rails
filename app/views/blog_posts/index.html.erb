@@ -2,7 +2,10 @@
 
 <h1>Blog Posts</h1>
 
-
+<%= form_with url: blog_posts_path, method: :get, local: true do |form| %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
 
 <table>
   <thead>
@@ -14,15 +17,7 @@
   </thead>
 
   <tbody>
-    <% @blog_posts.each do |blog_post| %>
-      <tr>
-        <td><%= blog_post.title %></td>
-        <td><%= blog_post.body %></td>
-        <td><%= link_to 'Show', blog_post %></td>
-        <td><%= link_to 'Edit', edit_blog_post_path(blog_post) %></td>
-        <td><%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render @blog_posts %>
   </tbody>
 </table>
 
