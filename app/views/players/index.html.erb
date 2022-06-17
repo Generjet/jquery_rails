@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Players</h1>
+<%= turbo_frame_tag "players" do %>
+  <%= form_with(url: players_path, method: "GET", data: { turbo_frame: "players", turbo_action: "advance" }) do |form| %>
+    <%= form.label :query, "Search by name:" %>
+    <%= form.text_field :query %>
+    <%= form.submit 'Search', name: nil %>
+  <% end %>
+  <!-- Rendering the new partial here -->
+  <% @players.each do |player| %>
+    <%= player.name %><br>
+  <% end %>
+<% end %>
+
+<%= link_to "New player", new_player_path %>
