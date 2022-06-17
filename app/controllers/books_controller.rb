@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[ show edit update destroy ]
+  before_action :set_book, only: %i[ show edit update destroy publish]
 
   # GET /books or /books.json
   def index
@@ -55,6 +55,10 @@ class BooksController < ApplicationController
       format.html { redirect_to books_url, notice: "Book was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def publish
+    @book.update(published_at: Time.zone.now)
   end
 
   private
