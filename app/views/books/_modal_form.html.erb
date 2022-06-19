@@ -1,0 +1,45 @@
+<!-- Modal -->
+<div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookModalLabel">Ном нэмэх</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <% book = Book.new %>
+      <%= form_with(model: book , local: false) do |form| %>
+        <% if book.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+      
+            <ul>
+              <% book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </div>
+      
+        <div class="field">
+          <%= form.label :description %>
+          <%= form.text_area :description %>
+        </div>
+      
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
