@@ -4,15 +4,23 @@
   <div class="col-md-4">
     <h1>Categories</h1>
     <% @categories.each do |cat| %>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown_<%= cat.id %>" data-bs-toggle="dropdown" >
-          <%= cat.name %>
-        </button>
-        <ul class="dropdown-menu">
-          <% cat.books.each do |book| %>
-            <li><%= link_to book.name, book_path(book), :class => "dropdown-item" %> </li>
-          <% end %>
-        </ul>
+      <div class="accordion accordion-flush" id="accordion_flush_<%= cat.id %>">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-<%= cat.id %>" aria-expanded="false" aria-controls="flush-collapse-<%= cat.id %>">
+              <%= cat.name %>
+            </button>
+          </h2>
+          <div id="flush-collapse-<%= cat.id %>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <ul>
+                <% cat.books.each do |book| %>
+                  <li><%= link_to book.name, book_path(book), :class => "dropdown-item" %> </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
   
