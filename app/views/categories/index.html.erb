@@ -30,12 +30,26 @@
   </div>
   <div class="col-md-4">
     <h1>Technologies</h1>
-
+    <input id="search_input" type="text" placeholder="search..." >
+    <ul id="books_list">
+      <% @books.each do |book| %>
+        <li><%= link_to book.name, book_path(book) %> </li>
+      <% end %>
+    </ul>
   </div>
   <div class="col-md-4">
     <h1>Documents</h1>
 
   </div>
   </div>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#search_input").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#books_list li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
