@@ -10,6 +10,7 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <th>Category</th>
       <th>Published at</th>
       <th colspan="3"></th>
     </tr>
@@ -20,9 +21,10 @@
       <tr>
         <td><%= book.name %></td>
         <td><%= book.description %></td>
-        <td><%= book.published_at %> <%= link_to 'Publish', publish_book_path(book), method: :get, remote: true %></td>
+        <td><%= book.category.name %></td>
+        <td><%= book.published_at %></td>
         <td><%= link_to 'Show', book, :class => "btn btn-success" %></td>
-        <td><%= link_to 'Edit', book_path(book) %></td>
+        <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -31,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Book', new_book_path, :class => "btn btn-primary", data: { bs_toggle: 'modal', bs_target: "#bookModal", remote: true } %>
+<%= link_to 'New Book REGISTRATION', new_book_path, :class => "btn btn-primary", data: { bs_toggle: 'modal', bs_target: "#bookModal", remote: true } %>

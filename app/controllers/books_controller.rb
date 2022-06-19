@@ -4,6 +4,7 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
+    # @book = Book.new
   end
 
   # GET /books/1 or /books/1.json
@@ -21,13 +22,11 @@ class BooksController < ApplicationController
 
   # POST /books or /books.json
   def create
-    raise params.to_yaml
     @book = Book.new(book_params)
-    @books = Book.all
 
     respond_to do |format|
       if @book.save
-        format.html { render :index, notice: "Book was successfully created." }
+        format.html { redirect_to book_url(@book), notice: "Book was successfully created." }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +37,6 @@ class BooksController < ApplicationController
 
   # PATCH/PUT /books/1 or /books/1.json
   def update
-    raise params.to_yaml
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to book_url(@book), notice: "Book was successfully updated." }
@@ -61,7 +59,6 @@ class BooksController < ApplicationController
   end
 
   def publish
-    raise params.to_yaml
     @book.update(published_at: Time.zone.now)
   end
 
@@ -73,6 +70,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:name, :description, :category_id)
+      params.require(:book).permit(:name, :description)
     end
 end

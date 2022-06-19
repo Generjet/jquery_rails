@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :categories
   resources :books
   get 'books/publish', to: 'books#publish', as: 'publish_book'

@@ -56,3 +56,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "turbo-rails", "~> 1.1"
 
 gem "stimulus-rails", "~> 1.0"
+
+gem 'rails_admin', '~> 3.0'
