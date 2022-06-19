@@ -20,9 +20,9 @@
       <tr>
         <td><%= book.name %></td>
         <td><%= book.description %></td>
-        <td><%= book.published_at %> <%= link_to 'Publish', publish_book_path(book), method: :patch, remote: true %></td>
+        <td><%= book.published_at %> <%= link_to 'Publish', publish_book_path(book), method: :get, remote: true %></td>
         <td><%= link_to 'Show', book, :class => "btn btn-success" %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td><%= link_to 'Edit', book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

@@ -25,7 +25,10 @@
           <%= form.label :name %>
           <%= form.text_field :name %>
         </div>
-      
+        <div class="field">
+          <%= form.label :category %>
+          <%= form.select :category, Category.pluck(:name) %>
+        </div>      
         <div class="field">
           <%= form.label :description %>
           <%= form.text_area :description %>

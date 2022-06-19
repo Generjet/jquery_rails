@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   resources :categories
-  resources :books do
-    member do
-      patch :publish
-    end
-  end
+  resources :books
+  get 'books/publish', to: 'books#publish', as: 'publish_book'
+
+  # resources :books do
+  #   member do
+  #     patch :publish
+  #   end
+  # end
   resources :players do
     collection do
       get 'search'
